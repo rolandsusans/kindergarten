@@ -836,18 +836,31 @@ const places = [
 // Initialize and add the map
 function initMap() {
     // The location of riga
-    const riga = { lat: 57.0419468, lng: 24.1758419 };
+    const riga = { lat: 56.953677, lng: 24.10037 };
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
+      zoom: 12,
       center: riga,
     });
 
     places.forEach(place => {
-        new google.maps.Marker({
+        const contentString = `<div class="content">Name: <b>${place.name}</b><br>Address:${place.address}<br>Language: ${place.language}<br>Min age: ${place.age}<br>Applications: ${place.applications}</div>`
+        const infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            ariaLabel: "Uluru",
+          });
+        
+        const marker = new google.maps.Marker({
             position: place.location,
             map: map,
             title: place.name
-          });
+        });
+
+        marker.addListener("click", () => {
+            infowindow.open({
+              anchor: marker,
+              map,
+            });
+        });  
     });
   }
   
