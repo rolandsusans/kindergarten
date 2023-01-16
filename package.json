@@ -22,7 +22,7 @@
     "typescript": "~4.9"
   },
   "scripts": {
-    "start": "node build/src/main.js",
+    "find-place-locations": "node build/src/find-place-location.js",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.json",
@@ -36,6 +36,7 @@
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.26",
     "tslib": "~2.4"
   },
   "volta": {
